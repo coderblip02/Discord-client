@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import "remixicon/fonts/remixicon.css";
+import { Route, Routes } from "react-router-dom";
+import Signup from "./components/Signup";
+import MainServer from "./components/MainServer";
+import Login from "./components/Login";
+import { AuthContextProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Username from "./components/Username";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContextProvider>
+      <Routes>
+        <Route path="/" element={<Login />} />
+
+        <Route
+          path="/Main-server"
+          element={
+            <ProtectedRoute>
+              <MainServer />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/username"
+          element={
+            <ProtectedRoute>
+              <Username />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </AuthContextProvider>
   );
 }
 

@@ -1,38 +1,899 @@
-.App {
+@import url("https://fonts.cdnfonts.com/css/google-sans");
+
+body {
+  font-family: "Product Sans", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  display: flex;
+  height: 100vh;
+  border: none;
+  width: 100vw;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent;
+}
+
+#sidebar-left {
+  width: 5.5%;
+  background-color: #202225;
+  color: #ffffff;
+  text-align: center;
+  border: none;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+#sidebar-right {
+  width: 15%;
+  background-color: #2f3136;
+  color: #ffffff;
+  border: none;
+}
+
+.discord__img__container {
+  padding-top: 20px;
+}
+
+.discord__img {
+  width: 70%;
+  text-align: center;
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.server__images {
+  padding-top: 20px;
+  position: relative;
+  transition: all 0.5s;
+}
+
+.server__img {
+  border-radius: 50%;
+  margin: 2px;
+  width: 70%;
+  text-align: center;
+  object-fit: contain;
+  position: relative;
+  transition: border-radius 0.5s;
+}
+
+.server__img:hover {
+  /* Change the border radius to 0 when hovered over */
+  border-radius: 15%;
+  cursor: pointer;
+}
+
+.server__images:after {
+  /* Hide the pseudo-element by default */
+  content: "";
+  display: none;
+  /* Position the pseudo-element */
+  position: absolute;
+  top: 30%;
+  left: 100%;
+  /* Add a small black background and white text */
+  background-color: black;
+  color: white;
+  /* Set the size of the pseudo-element */
+  width: 50px;
+  height: 50px;
+  /* Center the text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Set the initial opacity to 0 */
+  opacity: 0;
+}
+
+.server__images:hover:after {
+  /* Display the pseudo-element when hovered over */
+  display: block;
+  /* Add the server name */
+  content: "Open A.I";
+
+  opacity: 100;
+}
+
+#sidebar-right {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#sidebar-right input {
+  width: 90%;
+  margin-top: 15px;
+  background-color: #202225;
+  height: 30px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  outline: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+#sidebar-right input::placeholder {
+  color: lightgray;
+  font-weight: 500;
+}
+
+.parameters {
+  display: flex;
+  flex-direction: column;
+  padding-left: 15px;
+}
+
+.fields {
+  display: flex;
+  align-items: center;
+  margin-left: 0.75rem;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.ri-user-add-fill {
+  font-size: 20px;
+  color: lightgray;
+}
+
+.icon {
+  padding-right: 0.75rem;
+}
+
+.font-text {
+  font-size: 15px;
+  color: lightgray;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.ri-snowy-fill {
+  font-size: 20px;
+  color: lightgray;
+}
+
+.ri-mail-send-fill {
+  color: lightgray;
+  font-size: 20px;
+}
+
+.direct__messages {
+  display: flex;
+  padding-top: 40px;
+  justify-content: space-between;
+  padding-left: 25px;
+}
+
+.ri-add-fill {
+  font-size: 20px;
+  color: lightgray;
+}
+
+.direct__messages p {
+  color: lightgray;
+  font-weight: 500;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.messages {
+  display: flex;
+  padding-left: 20px;
+  flex-direction: column;
+}
+
+.message__1 {
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+  cursor: pointer;
+}
+
+.message__1 p {
+  color: lightgray;
+}
+
+.messages__img {
+  position: relative;
+}
+
+.message__img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  position: relative;
+  object-fit: contain;
+}
+
+.message__text {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.bottom-box {
+  display: none;
+  /* position: fixed;
+  
+    bottom: 0;
+    left: 10;
+    width: 15%;
+    height: 60px;
+    background-color: #262930;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  /* Other styling for the bottom box goes here */
+}
+
+.profile-picture {
+  /* Styling for the profile picture goes here */
+  width: 40px;
+  padding-top: 10px;
+  margin-left: 10px;
+}
+
+.bottom__icons {
+  display: flex;
+  margin-left: 16px;
+  align-items: center;
+  cursor: pointer;
+  /* Other styling for the icons goes here */
+}
+
+.bottom__icon {
+  font-size: 20px;
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.bottom__img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  position: relative;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.profile__box {
+  display: flex;
+  align-items: center;
+}
+
+.profile__text {
+  margin-left: 20px;
+}
+
+.profile__code {
+  color: lightgrey;
+  font-size: 11px;
+  padding-right: 20px;
+}
+
+.ri-headphone-fill,
+.ri-phone-fill,
+.ri-settings-5-fill {
+  color: lightgray;
+}
+
+#main-content {
+  flex: 1 1 100%;
+  background-color: #36393f;
+  border: none;
+  color: white;
+  height: 100vh;
+  overflow-y: scroll;
+
+}
+
+#main-content header {
+  display: flex;
+  padding-top: 12px;
+  justify-content: space-between;
+}
+
+.header__icons {
+  display: flex;
+  align-items: flex-end;
+}
+
+.header__icon {
+  padding-right: 20px;
+  font-size: 24px;
+  color: lightgray;
+  cursor: pointer;
+}
+
+.header__icon1 {
+  padding-right: 20px;
+  font-size: 24px;
+  color: lightgray;
+  cursor: pointer;
+}
+
+.header__text {
+  display: flex;
+  align-items: center;
+}
+
+.header__text span {
+  padding-right: 20px;
+  margin-left: 20px;
+  color: lightgray;
+  font-size: 20px;
+}
+
+.header__text p {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.online-indicator {
+  background-color: rgb(16, 201, 16);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.header__search {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  background-color: #3b3d3f;
+  height: 30px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+}
+
+.message__box.message__poll {
+  display: flex;
+}
+
+.checkmark-none {
+  display: none;
+}
+
+.checkmark-none.checkmark {
+  width: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.ri-user-add-fill {
+  font-size: 30px;
+}
+
+
+#main-content input::placeholder {
+  color: white;
+  font-weight: 500;
+}
+
+.input-container {
+   position: absolute; /* or fixed */
+  bottom: 20px;
+  width: 80%;
+  display: flex;
+  margin-left: 20px;
+  padding-right: 10px;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+.input-box {
+  width: 95%;
+  outline: none;
+  background-color: #40444B;
+  border: none;
+  height: 40px;
+  color: white;
+  font-weight: 200;
+  border-radius: 10px;
+  padding-left: 30px;
+  overflow-wrap: break-word;
+}
+
+.input-container i {
+  position: absolute;
+  /* add this line */
+  margin-left: 10px;
+}
+
+#main-content input {
+  overflow-wrap: break-word;
+}
+
+#main-content input::placeholder {
+  color: lightgray;
+  font-weight: 500;
+}
+
+.messages__box {
+  display: flex;
+  flex-direction: column;
+}
+
+.message__box {
+  display: flex;
+  padding-top: 10px;
+  padding-left: 20px;
+}
+
+.message__text__text {
+  display: flex;
+  padding-bottom: 10px;
+  flex-direction: column;
+  margin-top: 3px;
+  padding-left: 10px;
+  flex-wrap: wrap;
+  width: 500px;
+  word-wrap: break-word;
+}
+
+.message__text1 {
+  color: lightgray;
+  width: 500px;
+  word-wrap: break-word;
+}
+
+.message__text1 {
+  color: lightgray;
+}
+
+.submit {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  #sidebar-right {
+    display: none;
+  }
+
+  #sidebar-left {
+    width: 20%;
+    border: none;
+  }
+
+  #main-content {
+    flex: 1 1 100%;
+    overflow-y: scroll;
+  }
+
+  .header__icon {
+    display: none;
+  }
+
+  .message__text__text {
+    width: 300px;
+    word-wrap: break-word;
+  }
+
+  .message__text1 {
+    color: lightgray;
+    width: 200px;
+    word-wrap: break-word;
+  }
+
+  .header__icon1 {
+    width: 15%;
+  }
+
+  .online-indicator {
+    display: none;
+  }
+
+  .message__box {
+    padding-right: 25px;
+  }
+
+  .input-container {
+    width: 70%;
+  }
+
+  body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media (max-width: 800px) and (min-width: 600px) {
+  #sidebar-right {
+    display: none;
+  }
+
+  #sidebar-left {
+    width: 10%;
+    border: none;
+  }
+
+  #main-content {
+    flex: 1 1 100%;
+  }
+
+  .header__icon {
+    display: none;
+  }
+
+  .message__text__text {
+    width: 400px;
+    word-wrap: break-word;
+    display: flex ;
+    align-items: center ;
+  }
+
+
+  .message__text1 {
+    color: lightgray;
+    width: 400px;
+    word-wrap: break-word;
+  }
+  .message-time {
+    font-size: 0.65rem;
+    font-style: italic;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    color: #e2e8f0;
+  }
+  .message__username {
+    display: flex;
+    align-items: center;
+    
+  }
+
+  .header__icon1 {
+    width: 15%;
+  }
+
+  .online-indicator {
+    display: none;
+  }
+
+  .message__box {
+    padding-right: 25px;
+  }
+}
+
+@media (max-width: 1000px) and (min-width: 801px) {
+  #sidebar-left {
+    width: 10%;
+    border: none;
+  }
+
+  #sidebar-right {
+    width: 30%;
+  }
+
+  #main-content {
+    width: 60%;
+  }
+
+  .online-indicator {
+    display: none;
+  }
+
+  .message__text1 {
+    color: lightgray;
+    width: 450px;
+    word-wrap: break-word;
+  }
+
+  .bottom-box {
+    width: 30%;
+  }
+
+  .input-container {
+    width: 55%;
+  }
+}
+
+@media (max-width: 600px) and (min-width: 200px) {
+  #sidebar-right {
+    display: none;
+  }
+
+  #sidebar-left {
+    width: 20%;
+    border: none;
+  }
+
+  #main-content {
+    flex: 1 1 100%;
+  }
+
+  .header__icon {
+    display: none;
+  }
+
+  .message__text__text {
+    width: 400px;
+    word-wrap: break-word;
+  }
+
+  .header__icon1 {
+    width: 15%;
+  }
+
+  .online-indicator {
+    display: none;
+  }
+
+  .message__box {
+    padding-right: 25px;
+  }
+
+  body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  #main-content {
+    border: none;
+    height: 100%;
+    width: fit-content;
+    overflow-y: scroll;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    background-color: #ccc;
+    border-radius: 5px;
+    opacity: 0.5;
+  }
+}
+
+.login-container {
+  background-color: #4b4f54;
+  height: 100vh;
+  width: 100%;
+  color: white;
+  display: flex;
+  align-items: center;
+
+  flex-direction: column;
+}
+
+.login-logo {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding-top: 20px;
+
+
 }
 
-.App-link {
-  color: #61dafb;
+.login-image {
+  width: 30%;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #40444a;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.login-header-text {
+  padding-top: 20px;
+}
+
+.login-header-text h1 {
+  font-size: 30px;
+  text-align: center;
+}
+
+.welcome-back {
+  margin-top: 6px;
+  font-size: 15px;
+  color: lightgray;
+  text-align: center;
+}
+.login-input-box{
+  width: 500px ;
+  margin-left: 150px ;
+  padding-top: 20px ;
+}
+.login-input-box input{
+  width: 70% ;
+  background-color: #323539;
+  outline: none;
+  border: none ;
+  padding: 15px ;
+  opacity: 0.5;
+  color: white ;
+}
+label{
+  text-align: left ;
+  display: flex ;
+  color: lightgray;
+  padding-bottom: 5px ;
+  font-weight: 700 ;
+}
+.login-input-box-1{
+  width: 500px ;
+  margin-left: 150px ;
+  padding-top: 20px ;
+}
+.login-input-box-1 input{
+  width: 70% ;
+  background-color: #323539;
+  outline: none;
+  border: none ;
+  padding: 15px ;
+ color: white ;
+  opacity: 0.5;
+
+}
+.forgot-password{
+  width: 500px ;
+  padding-top: 10px;
+}
+.forgot-password p {
+  margin-left: 75px ;
+  color: #6c77ea; ;
+  
+}
+.login-button{
+  padding-top: 25px ;
+  width: 500px ;
+  margin-left: 150px ;
+  
+}
+.login-button button{
+  width:70%;
+  background-color: #5865F2;
+  color: white ;
+  padding: 15px ;
+  border: none ;
+  outline: none ;
+  font-size: 15px ;
+  font-weight: 700 ;
+  border-radius:  5px ;
+  cursor: pointer ;
+}
+.need-an-account{
+  width: 500px ;
+  padding-top: 10px;
+  margin-left: 150px ;
+}
+.need-an-account p{
+  color: darkgrey;
+  text-align: left ;
+}
+.need-an-account a {
+  text-decoration: none ;
+  color: #6c77ea; 
+}
+.login-image-1{
+  width: 100%;
+  padding-top: 30px ;
+  display: flex ;
+  align-items:center ;
+  flex-direction: column;
+}
+.login-display-image{
+  width: 200px;
+}
+@media only screen and (max-width: 370px){
+  .login-input-box{
+    width: 360px ;
+    margin-left: 40px ;
+    padding-top: 20px ;
   }
-  to {
-    transform: rotate(360deg);
+  .login-input-box input{
+    width: 90% ;
+    background-color: #323539;
+    outline: none;
+    border: none ;
+    padding: 15px ;
+    opacity: 0.5;
   }
+  .login-input-box-1{
+    width: 360px ;
+    margin-left: 40px ;
+    padding-top: 20px ;
+  }
+  .login-input-box-1 input{
+    width: 90% ;
+    background-color: #323539;
+    outline: none;
+    border: none ;
+    padding: 15px ;
+    opacity: 0.5;
+  }
+  .forgot-password{
+    width: 360px ;
+    padding-top: 10px;
+  }
+  .forgot-password p {
+    margin-left: 20px ;    
+  }
+  .login-button{
+    padding-top: 15px ;
+    width: 360px ;
+    margin-left: 40px ;
+    
+  }
+  .login-button button{
+    width:90%;
+  }
+  .need-an-account{
+    width: 360px ;
+    padding-top: 10px;
+    margin-left: 45px ;    
+  }
+  
+}
+
+.login-image-2{
+  padding-top:20px ;
+}
+.login-display-image-2{
+  width: 400px;
+}
+
+.user-store-container{
+  background-color: #40444a;
+  height: 100vh ;
+  width: 100vw;
+  overflow-y: scroll;
+}
+.user-store-image-box{
+  width: 400px ;
+  
+}
+.user-store-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  padding-top: 20px ;
+  overflow-y: scroll;
+  height: 100vh;
+  overflow-x: hidden;
+}
+.user-store-image-box img {
+  width: 60%;
+  margin-left: 70px ;
+}
+.user-store-text p{
+  color: lightgray ;
+  font-size: 20px;
+  text-align: center;
+  font-weight: 700 ;
+  
+}
+.user-store-text{
+  margin-top:5px ;
+}
+.login-image-3{
+  padding-top:20px ;
+}
+.login-display-image-3{
+  width: 400px;
 }

@@ -15,7 +15,7 @@ import {
 import db from "../firebase";
 
 function MainContent() {
-  let socketio = socketIOClient("http://localhost:5000");
+  let socketio = socketIOClient("https://discord-clone-api-g397.onrender.com");
   const [chats, setChats] = useState([]);
   const [user, setUser] = useState(localStorage.getItem("user"));
   const [avatar, setAvatar] = useState(localStorage.getItem("avatar"));
